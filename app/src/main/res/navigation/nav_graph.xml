@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/main_fragment">
+
+    <fragment
+        android:id="@+id/main_fragment"
+        android:name="com.sixtyninefourtwenty.vacationdaysreworked.fragments.MainFragment"
+        android:label="@string/vacations"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_main_fragment_to_settings_fragment"
+            app:destination="@id/settings_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_summary_fragment"
+            app:destination="@id/summary_fragment" />
+        <action
+            android:id="@+id/action_main_fragment_to_add_vacation_dialog"
+            app:destination="@id/add_vacation_dialog" />
+        <action
+            android:id="@+id/action_main_fragment_to_edit_vacation_dialog"
+            app:destination="@id/edit_vacation_dialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/settings_fragment"
+        android:name="com.sixtyninefourtwenty.vacationdaysreworked.fragments.SettingsFragment"
+        android:label="@string/settings">
+        <action
+            android:id="@+id/action_navigation_settings_to_navigation_appearance_settings"
+            app:destination="@id/navigation_appearance_settings"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_appearance_settings"
+        android:name="com.sixtyninefourtwenty.theming.preferences.ThemingPreferenceFragment"
+        android:label="@string/appearance_settings"/>
+    <fragment
+        android:id="@+id/summary_fragment"
+        android:name="com.sixtyninefourtwenty.vacationdaysreworked.fragments.SummaryFragment"
+        android:label="@string/summary"/>
+    <dialog
+        android:id="@+id/add_vacation_dialog"
+        android:name="com.sixtyninefourtwenty.vacationdaysreworked.dialogs.AddVacationDialog"/>
+    <dialog
+        android:id="@+id/edit_vacation_dialog"
+        android:name="com.sixtyninefourtwenty.vacationdaysreworked.dialogs.EditVacationDialog">
+        <argument
+            android:name="vacation"
+            app:argType="com.sixtyninefourtwenty.vacationdaysreworked.data.Vacation"/>
+    </dialog>
+
+</navigation>

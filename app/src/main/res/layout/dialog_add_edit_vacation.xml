@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="6dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/vacation_name"
+        app:layout_constraintTop_toBottomOf="@id/name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/description"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/name_input_layout"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/desc_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/vacation_desc"
+        app:layout_constraintTop_toBottomOf="@id/desc">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/desc_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/date_type_selection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/desc_input_layout"
+        android:checkedButton="@id/single_date">
+
+        <RadioButton
+            android:id="@+id/single_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/single_date"/>
+
+        <RadioButton
+            android:id="@+id/date_range"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/date_range"/>
+
+        <RadioButton
+            android:id="@+id/dont_update_dates"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dont_update_dates"/>
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/is_sick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/is_sick_day"
+        app:layout_constraintTop_toBottomOf="@id/date_type_selection"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

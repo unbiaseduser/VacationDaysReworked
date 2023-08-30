@@ -1,0 +1,22 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/appearance">
+
+        <Preference
+            app:key="navigation_appearance_prefs"
+            app:title="@string/appearance_settings"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/behavior">
+
+        <SwitchPreferenceCompat
+            app:key="track_sick"
+            app:title="@string/track_sick"
+            app:summary="@string/track_sick_explanation"
+            app:icon="@drawable/medical_services"
+            app:defaultValue="true"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

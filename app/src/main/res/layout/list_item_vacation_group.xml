@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="6dp"
+    android:layout_marginHorizontal="6dp">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/group_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/delete_group"
+        android:layout_toStartOf="@id/expand_collapse_group"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/expand_vacations"
+        android:layout_centerVertical="true"
+        tools:text="Nov 2022"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/expand_collapse_group"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:src="@drawable/expand_less"
+        android:background="@drawable/ripple"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/collapse"
+        android:tooltipText="@string/collapse"/>
+
+    <ImageView
+        android:id="@+id/delete_group"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/ripple"
+        android:padding="12dp"
+        android:src="@drawable/delete"
+        android:contentDescription="@string/delete"
+        android:tooltipText="@string/delete" />
+
+    <net.cachapa.expandablelayout.ExpandableLayout
+        android:id="@+id/expand_vacations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expand_collapse_group"
+        app:el_expanded="true">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/vacations_in_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </net.cachapa.expandablelayout.ExpandableLayout>
+
+</RelativeLayout>

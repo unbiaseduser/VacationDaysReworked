@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AlertDialogTheme.Material3" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="dialogCornerRadius">36dp</item>
+    </style>
+
+    <style name="Preference.MaterialSwitchPreference" parent="Preference.SwitchPreferenceCompat.Material">
+        <item name="android:widgetLayout">@layout/preferences_material_switch</item>
+    </style>
+</resources>
