@@ -14,11 +14,11 @@ import com.sixtyninefourtwenty.bottomsheetalertdialog.BottomSheetAlertDialogFrag
 import com.sixtyninefourtwenty.bottomsheetalertdialog.DialogButtonProperties
 import com.sixtyninefourtwenty.bottomsheetalertdialog.misc.BaseBottomSheetAlertDialogFragment
 import com.sixtyninefourtwenty.bottomsheetalertdialog.misc.createBottomSheetAlertDialog
+import com.sixtyninefourtwenty.stuff.getInput
+import com.sixtyninefourtwenty.stuff.isBlank
 import com.sixtyninefourtwenty.vacationdaysreworked.R
 import com.sixtyninefourtwenty.vacationdaysreworked.data.Vacation
 import com.sixtyninefourtwenty.vacationdaysreworked.databinding.DialogAddEditVacationBinding
-import com.sixtyninefourtwenty.vacationdaysreworked.utils.getInput
-import com.sixtyninefourtwenty.vacationdaysreworked.utils.isBlank
 import com.sixtyninefourtwenty.vacationdaysreworked.viewmodels.MainViewModel
 import kotlinx.coroutines.launch
 

@@ -3,9 +3,9 @@ package com.sixtyninefourtwenty.vacationdaysreworked.dialogs
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import com.sixtyninefourtwenty.stuff.makeToast
 import com.sixtyninefourtwenty.vacationdaysreworked.R
 import com.sixtyninefourtwenty.vacationdaysreworked.data.Vacation
-import com.sixtyninefourtwenty.vacationdaysreworked.utils.showToast
 import kotlinx.coroutines.launch
 
 class EditVacationDialog : AbstractAddEditVacationDialog() {
@@ -23,7 +23,7 @@ class EditVacationDialog : AbstractAddEditVacationDialog() {
     override fun onVacationCreated(newVacation: Vacation) {
         mainViewModel.updateVacations(newVacation).invokeOnCompletion {
             lifecycleScope.launch {
-                showToast(R.string.edit_successful)
+                requireContext().makeToast(R.string.edit_successful).show()
                 dismiss()
             }
         }
