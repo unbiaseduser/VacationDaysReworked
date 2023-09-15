@@ -31,7 +31,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>() {
 
     private val mainViewModel: MainViewModel by activityViewModels { MainViewModel.Factory }
 
-    override fun initBinding(
+    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentCalendarBinding {

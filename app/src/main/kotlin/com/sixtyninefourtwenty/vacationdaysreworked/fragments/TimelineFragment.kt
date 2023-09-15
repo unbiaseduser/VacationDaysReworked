@@ -34,7 +34,7 @@ class TimelineFragment : BaseFragment<FragmentTimelineBinding>() {
 
     private val mainViewModel: MainViewModel by activityViewModels { MainViewModel.Factory }
 
-    override fun initBinding(
+    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentTimelineBinding {

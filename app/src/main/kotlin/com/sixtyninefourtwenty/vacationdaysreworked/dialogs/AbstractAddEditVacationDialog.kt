@@ -9,19 +9,20 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.sixtyninefourtwenty.bottomsheetalertdialog.BottomSheetAlertDialogFragmentViewBuilder
 import com.sixtyninefourtwenty.bottomsheetalertdialog.DialogButtonProperties
+import com.sixtyninefourtwenty.bottomsheetalertdialog.misc.BaseBottomSheetAlertDialogFragment
+import com.sixtyninefourtwenty.bottomsheetalertdialog.misc.createBottomSheetAlertDialog
 import com.sixtyninefourtwenty.vacationdaysreworked.R
-import com.sixtyninefourtwenty.vacationdaysreworked.databinding.DialogAddEditVacationBinding
 import com.sixtyninefourtwenty.vacationdaysreworked.data.Vacation
+import com.sixtyninefourtwenty.vacationdaysreworked.databinding.DialogAddEditVacationBinding
 import com.sixtyninefourtwenty.vacationdaysreworked.utils.getInput
 import com.sixtyninefourtwenty.vacationdaysreworked.utils.isBlank
 import com.sixtyninefourtwenty.vacationdaysreworked.viewmodels.MainViewModel
 import kotlinx.coroutines.launch
 
-abstract class AbstractAddEditVacationDialog : BottomSheetDialogFragment() {
+abstract class AbstractAddEditVacationDialog : BaseBottomSheetAlertDialogFragment<DialogAddEditVacationBinding>() {
 
     abstract val existingVacation: Vacation?
 
@@ -32,18 +33,14 @@ abstract class AbstractAddEditVacationDialog : BottomSheetDialogFragment() {
 
     abstract val subclassFragmentManager: FragmentManager
 
-    private var nullableRoot: View? = null
-    private val root get() = nullableRoot!!
-    private lateinit var binding: DialogAddEditVacationBinding
-
     protected val mainViewModel: MainViewModel by activityViewModels { MainViewModel.Factory }
 
     override fun onCreateView(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+        container: ViewGroup?
+    ): DialogAddEditVacationBinding = DialogAddEditVacationBinding.inflate(inflater, container, false)
 
+    override fun initDialog(binding: DialogAddEditVacationBinding): BottomSheetAlertDialogFragmentViewBuilder {
         fun openSingleDatePicker() {
             MaterialDatePicker.Builder.datePicker().build().apply {
                 addOnPositiveButtonClickListener {
@@ -77,11 +74,10 @@ abstract class AbstractAddEditVacationDialog : BottomSheetDialogFragment() {
                 show(subclassFragmentManager, null)
             }
         }
-
-        binding = DialogAddEditVacationBinding.inflate(inflater, container, false)
-        nullableRoot = BottomSheetAlertDialogFragmentViewBuilder(binding.root, this)
-            .setTitle(title)
-            .setPositiveButton(DialogButtonProperties(
+        return createBottomSheetAlertDialog(
+            view = binding.root,
+            titleText = getString(title),
+            positiveButtonProperties = DialogButtonProperties(
                 textRes = android.R.string.ok,
                 listener = {
                     if (existingVacation == null && binding.nameInput.isBlank()) {
@@ -109,13 +105,12 @@ abstract class AbstractAddEditVacationDialog : BottomSheetDialogFragment() {
                     }
                 },
                 dismissAfterClick = false
-            ))
-            .setNegativeButton(DialogButtonProperties(textRes = android.R.string.cancel))
-            .rootView
-        return root
+            ),
+            negativeButtonProperties = DialogButtonProperties(textRes = android.R.string.cancel)
+        )
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(binding: DialogAddEditVacationBinding, savedInstanceState: Bundle?) {
         val vacation = existingVacation
         if (vacation != null) {
             binding.descInput.setText(vacation.description)
@@ -142,11 +137,5 @@ abstract class AbstractAddEditVacationDialog : BottomSheetDialogFragment() {
             binding.dontUpdateDates.visibility = View.GONE
         }
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        nullableRoot = null
-    }
-
 
 }

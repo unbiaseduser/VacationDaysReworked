@@ -26,7 +26,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     private val mainViewModel: MainViewModel by activityViewModels { MainViewModel.Factory }
 
-    override fun initBinding(inflater: LayoutInflater, container: ViewGroup?): FragmentMainBinding {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?): FragmentMainBinding {
         return FragmentMainBinding.inflate(inflater, container, false)
     }
 

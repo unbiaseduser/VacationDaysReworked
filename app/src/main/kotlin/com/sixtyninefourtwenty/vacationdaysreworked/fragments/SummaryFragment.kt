@@ -36,7 +36,7 @@ class SummaryFragment : BaseFragment<FragmentSummaryBinding>() {
     private val mainViewModel: MainViewModel by activityViewModels { MainViewModel.Factory }
     private val adapter = VacationDaysPerMonthAdapter()
 
-    override fun initBinding(
+    override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?
     ): FragmentSummaryBinding {
