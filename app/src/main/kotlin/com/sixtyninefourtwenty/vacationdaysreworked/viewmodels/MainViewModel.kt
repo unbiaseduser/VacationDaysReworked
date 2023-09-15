@@ -13,33 +13,34 @@ import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 class MainViewModel(private val vacationsRepository: VacationsRepository) : ViewModel() {
 
     val allVacationsByTimeFromAscending = vacationsRepository.allVacationsByTimeFromAscending
 
-    fun insertVacations(vararg vacations: Vacation) =
-        viewModelScope.launch(Dispatchers.IO) { vacationsRepository.insertVacation(*vacations) }
+    fun insertVacations(vararg vacations: Vacation, context: CoroutineContext = Dispatchers.IO) =
+        viewModelScope.launch(context) { vacationsRepository.insertVacation(*vacations) }
 
-    fun updateVacations(vararg vacations: Vacation) =
-        viewModelScope.launch(Dispatchers.IO) { vacationsRepository.updateVacation(*vacations) }
+    fun updateVacations(vararg vacations: Vacation, context: CoroutineContext = Dispatchers.IO) =
+        viewModelScope.launch(context) { vacationsRepository.updateVacation(*vacations) }
 
-    fun deleteVacation(vararg vacations: Vacation) =
-        viewModelScope.launch(Dispatchers.IO) { vacationsRepository.deleteVacation(*vacations) }
+    fun deleteVacation(vararg vacations: Vacation, context: CoroutineContext = Dispatchers.IO) =
+        viewModelScope.launch(context) { vacationsRepository.deleteVacation(*vacations) }
 
-    fun deleteVacation(vacations: List<Vacation>) =
-        viewModelScope.launch(Dispatchers.IO) { vacationsRepository.deleteVacation(vacations) }
+    fun deleteVacation(vacations: List<Vacation>, context: CoroutineContext = Dispatchers.IO) =
+        viewModelScope.launch(context) { vacationsRepository.deleteVacation(vacations) }
 
-    fun findVacationsByNameAsync(name: String): Deferred<List<Vacation>> =
-        viewModelScope.async(Dispatchers.IO) { vacationsRepository.findVacationsByName(name) }
+    fun findVacationsByNameAsync(name: String, context: CoroutineContext = Dispatchers.IO): Deferred<List<Vacation>> =
+        viewModelScope.async(context) { vacationsRepository.findVacationsByName(name) }
 
-    fun findVacationsByDescriptionAsync(description: String): Deferred<List<Vacation>> =
-        viewModelScope.async(Dispatchers.IO) {
+    fun findVacationsByDescriptionAsync(description: String, context: CoroutineContext = Dispatchers.IO): Deferred<List<Vacation>> =
+        viewModelScope.async(context) {
             vacationsRepository.findVacationsByDescription(description)
         }
 
-    fun checkIfVacationExistsAsync(name: String): Deferred<Boolean> =
-        viewModelScope.async(Dispatchers.IO) { vacationsRepository.checkIfVacationExists(name) }
+    fun checkIfVacationExistsAsync(name: String, context: CoroutineContext = Dispatchers.IO): Deferred<Boolean> =
+        viewModelScope.async(context) { vacationsRepository.checkIfVacationExists(name) }
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
