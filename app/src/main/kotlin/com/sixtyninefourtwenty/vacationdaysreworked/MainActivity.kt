@@ -7,7 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.preference.PreferenceManager
-import com.sixtyninefourtwenty.theming.applyTheming
+import com.sixtyninefourtwenty.theming.preferences.applyThemingWithPreferences
 import com.sixtyninefourtwenty.vacationdaysreworked.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false)
-        applyTheming(
+        applyThemingWithPreferences(
             material2ThemeStyleRes = R.style.Theme_VacationDaysReworked,
             material3CustomColorsThemeStyleRes = R.style.Theme_VacationDaysReworked_Material3_Android11,
             material3DynamicColorsThemeStyleRes = R.style.Theme_VacationDaysReworked_Material3

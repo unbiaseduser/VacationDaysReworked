@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.VacationDaysReworked.Material3" parent="AppTheme.Material3.DynamicColors">
+    <style name="Theme.VacationDaysReworked.Material3" parent="AppTheme.Material3.DynamicColors.WithCustomPreferences">
 
     </style>
 </resources>
